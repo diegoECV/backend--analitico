@@ -17,9 +17,10 @@ class SQLDatabase:
         # Crear engine con un Pool de Conexiones
         cls.engine = create_engine(
             conn_str, 
+            connect_args={"timeout": 3, "login_timeout": 3},
             pool_size=10,        # Mantiene 10 conexiones permanentemente abiertas
             max_overflow=20,     # Puede abrir hasta 20 más en picos de tráfico extremo
-            pool_timeout=30,     # Espera hasta 30s por una conexión libre si el pool está lleno
+            pool_timeout=5,      # Espera hasta 5s por una conexión libre si el pool está lleno
             pool_recycle=1800    # Renueva la conexión cada 30 min (evita caídas por firewall)
         )
         logger.info("Connection Pool de SQL Server inicializado con éxito")

@@ -14,6 +14,7 @@ from app.routes.proveedores_routes import proveedores_bp
 from app.routes.trazabilidad_routes import trazabilidad_bp
 from app.routes.audit_routes import audit_bp
 from app.routes.dashboard_routes import dashboard_bp
+from app.routes.estudiantes_routes import estudiantes_bp
 
 # Configurar logs
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -45,6 +46,7 @@ def create_app():
     app.register_blueprint(proveedores_bp, url_prefix='/api/v1/analytics/proveedores')
     app.register_blueprint(trazabilidad_bp, url_prefix='/api/v1/analytics/trazabilidad')
     app.register_blueprint(audit_bp, url_prefix='/api/v1/analytics/audit')
+    app.register_blueprint(estudiantes_bp, url_prefix='/api/v1/analytics/estudiantes')
 
     # Manejo Global de Errores
     @app.errorhandler(Exception)
